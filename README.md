@@ -1,16 +1,30 @@
-# React + Vite
+# Aricitacts Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React + Vite frontend with an Express.js backend for handling contact form submissions.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## React Compiler
+2. Start the backend server:
+   ```bash
+   npm run server
+   ```
+   This will start the server on http://localhost:3000
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. In a new terminal, start the frontend development server:
+   ```bash
+   npm run dev
+   ```
+   This will start the Vite dev server, usually on http://localhost:5173
 
-## Expanding the ESLint configuration
+## Available Scripts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `npm run dev` - Start the Vite development server
+- `npm run build` - Build the project for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview the production build
+- `npm run server` - Start the backend server
