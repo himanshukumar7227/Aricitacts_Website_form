@@ -5,24 +5,26 @@ import nodemailer from 'nodemailer';
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
-// Generated API Key
-const API_KEY = process.env.API_KEY || 'acf30e30e78401e4876d6534e9add756f5060b5c9621d8e9cd183afdddad6655';
-
+const API_KEY = process.env.API_KEY;
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
 
+if (!API_KEY) {
+  console.error('Missing required environment variable: API_KEY');
+  process.exit(1);
+}
+
 if (!EMAIL_USER || !EMAIL_PASS) {
-  console.error('Missing required environment variables EMAIL_USER and/or EMAIL_PASS');
+  console.error('Missing required environment variables: EMAIL_USER and/or EMAIL_PASS');
   process.exit(1);
 }
 
 app.use(cors());
 app.use(express.json());
 
-// Create reusable transporter object for Gmail SMTP
 let transporter;
 
-async function setupEmail() {
+function initTransporter() {
   transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -30,52 +32,62 @@ async function setupEmail() {
       pass: EMAIL_PASS,
     },
   });
-  console.log('Gmail SMTP configured and ready.');
+
+  transporter.verify((err, success) => {
+    if (err) {
+      console.error('Nodemailer transporter verification failed:', err);
+      process.exit(1);
+    } else {
+      console.log('Nodemailer transporter successfully verified and ready.');
+    }
+  });
 }
 
-setupEmail();
+initTransporter();
 
 app.post('/submit', async (req, res) => {
-  // Check if transporter is ready
   if (!transporter) {
+    console.error('Email transporter not initialized.');
     return res.status(500).json({ error: 'Email service not initialized' });
   }
 
   const apiKey = req.headers['x-api-key'];
 
   if (!apiKey || apiKey !== API_KEY) {
+    console.warn('Unauthorized request: invalid x-api-key');
     return res.status(401).json({ error: 'Invalid API key' });
   }
 
   const { name, email, message, phone } = req.body;
 
   if (!name || !email || !message) {
+    console.warn('Bad request: missing required fields', { name, email, message });
     return res.status(400).json({ error: 'Name, email, and message are required' });
   }
 
-  // Send email
-  try {
-    const mailOptions = {
-      from: '"Contact Form" <noreply@example.com>',
-      to: 'himanshukumar8051084723@gmail.com',
-      subject: 'New Contact Form Submission',
-      html: `
-        <h3>New Message from Contact Form</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
-    };
+  const mailOptions = {
+    from: `${EMAIL_USER}`,
+    to: EMAIL_USER,
+    replyTo: email,
+    subject: `New Contact Form Submission from ${name}`,
+    html: `
+      <h3>New Message from Contact Form</h3>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+      <p><strong>Message:</strong></p>
+      <p>${String(message).replace(/\n/g, '<br>')}</p>
+    `,
+  };
 
+  try {
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent: %s', info.messageId);
+    console.log('Email sent successfully:', info.messageId);
+    return res.status(200).json({ success: true, message: 'Form submitted successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
+    return res.status(500).json({ error: 'Unable to send email', details: error?.message || 'unknown' });
   }
-
-  res.json({ success: true, message: 'Form submitted successfully' });
 });
 
 app.listen(PORT, () => {
