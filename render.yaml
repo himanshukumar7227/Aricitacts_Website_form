@@ -5,11 +5,11 @@ services:
     region: oregon
     plan: free
     buildCommand: npm install
-    startCommand: npm run server
+    startCommand: node server.js
     envVars:
       - key: EMAIL_USER
-        fromSecret: EMAIL_USER
+        value: "your-email@example.com"
       - key: EMAIL_PASS
-        fromSecret: EMAIL_PASS
+        value: "your-email-password"
       - key: API_KEY
-        fromSecret: CONTACT_FORM_API_KEY
+        value: "acf30e30e78401e4876d6534e9add756f5060b5c9621d8e9cd183afdddad6655"
