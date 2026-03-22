@@ -3,10 +3,18 @@ import cors from 'cors';
 import nodemailer from 'nodemailer';
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 // Generated API Key
-const API_KEY = 'acf30e30e78401e4876d6534e9add756f5060b5c9621d8e9cd183afdddad6655';
+const API_KEY = process.env.API_KEY || 'acf30e30e78401e4876d6534e9add756f5060b5c9621d8e9cd183afdddad6655';
+
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASS = process.env.EMAIL_PASS;
+
+if (!EMAIL_USER || !EMAIL_PASS) {
+  console.error('Missing required environment variables EMAIL_USER and/or EMAIL_PASS');
+  process.exit(1);
+}
 
 app.use(cors());
 app.use(express.json());
@@ -18,8 +26,8 @@ async function setupEmail() {
   transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'himanshukumar8051084723@gmail.com',
-      pass: 'cxzmmlbqzekwnvqm',
+      user: EMAIL_USER,
+      pass: EMAIL_PASS,
     },
   });
   console.log('Gmail SMTP configured and ready.');

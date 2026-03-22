@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: aricitacts-website-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run server
+    envVars:
+      - key: EMAIL_USER
+        fromSecret: EMAIL_USER
+      - key: EMAIL_PASS
+        fromSecret: EMAIL_PASS
+      - key: API_KEY
+        fromSecret: CONTACT_FORM_API_KEY
