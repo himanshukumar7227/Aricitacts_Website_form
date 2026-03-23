@@ -8,8 +8,24 @@ import location_icon from '../../assets/location-icon.png'
 function Contact() {
   const [formMessage, setFormMessage] = useState('');
 
+  const openWhatsApp = () => {
+    const phone = '916205289787' // replace with your number (country code + phone)
+    const text = encodeURIComponent('Hello! I want to contact you.')
+    const url = `https://wa.me/${phone}?text=${text}`
+    window.open(url, '_blank')
+  }
+
+  const openEmail = () => {
+    const email = 'ghraj2083@gmail.com'
+    const subject = encodeURIComponent('Contact Inquiry')
+    const body = encodeURIComponent('Hello! I want to contact you.')
+    const url = `mailto:${email}?subject=${subject}&body=${body}`
+    window.open(url, '_blank')
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFormMessage("Sanding........")
     const formData = new FormData(e.target);
     const data = {
       name: formData.get('name'),
@@ -50,8 +66,8 @@ function Contact() {
             our services, pricing, or anything else, our team is ready to
              answer all your </p>
         <ul>
-            <li><img src={mail_icon} alt="Mail Icon" /> ghraj2083@gmail.com</li>
-            <li><img src={phone_icon} alt="Phone Icon" /> +91 6205289787</li>
+            <li><img src={mail_icon} alt="Mail Icon" /> <span onClick={openEmail} style={{cursor: 'pointer', color: '#007bff'}}>ghraj2083@gmail.com</span></li>
+            <li><img src={phone_icon} alt="Phone Icon" /> <span onClick={openWhatsApp} style={{cursor: 'pointer', color: '#007bff'}}>+91 6205289787</span></li>
             <li><img src={location_icon} alt="Location Icon" /> 123 Main Street, City, Country</li>
         </ul>
       </div>

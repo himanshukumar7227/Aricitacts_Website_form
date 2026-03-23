@@ -1,0 +1,16 @@
+.footer{
+    background-color: #333;
+    border-top: 1px solid #797979;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 10px;
+}

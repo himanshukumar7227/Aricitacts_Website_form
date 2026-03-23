@@ -5,6 +5,8 @@ import Services from './Componenets/Services/Services.jsx'
 import Title from './Componenets/Title/Title.jsx'
 import About from './Componenets/About/About.jsx'
 import Contact from './Componenets/Contact/Contact.jsx'
+import Footer from './Componenets/Footer/Footer.jsx'
+import Developer from './Componenets/Developer/Developer.jsx'
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
         <About />
         <Title SubTitle='Contact Us' Title='Get In Touch' />
         <Contact/>
+        <Footer/>
+        <Developer/>
       </div>
     </div>
   )

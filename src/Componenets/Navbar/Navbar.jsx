@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Navbar.css'
 import logo from '../../assets/logo.png'
+import { Link } from 'react-scroll';
 
 const Navbar = () => {
     const [sticky, setSticky] = useState(false);
@@ -18,22 +19,15 @@ const Navbar = () => {
         };
     }, []);
 
-
-  const openWhatsApp = () => {
-    const phone = '916205289787' // replace with your number (country code + phone)
-    const text = encodeURIComponent('Hello! I want to contact you.')
-    const url = `https://wa.me/${phone}?text=${text}`
-    window.open(url, '_blank')
-  }
-
   return (
     <nav className={`container ${sticky ? 'dark-nav' : ''}`} >
       <img src={logo} alt="Logo" className='logo' />
       <ul className='nav-btn'>
-        <li>Home</li>
-        <li>About</li>
-        <li>Services</li>
-        <li><button className='btn' onClick={openWhatsApp}>Contact Us</button></li>
+        <li><Link to="hero" spy={true} smooth={true} offset={0} duration={500}>Home</Link></li>
+        <li><Link to="about" spy={true} smooth={true} offset={-150} duration={500}>About</Link></li>
+        <li><Link to="service" spy={true} smooth={true} offset={-260} duration={500}>Services</Link></li>
+        <li><Link to="contact" spy={true} smooth={true} offset={-260} duration={500}>
+        <button className='btn'>Contact Us</button></Link></li>
       </ul>
     </nav>
   )
