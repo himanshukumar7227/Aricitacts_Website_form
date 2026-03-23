@@ -20,7 +20,7 @@ const Navbar = () => {
 
 
   const openWhatsApp = () => {
-    const phone = '917979881495' // replace with your number (country code + phone)
+    const phone = '916205289787' // replace with your number (country code + phone)
     const text = encodeURIComponent('Hello! I want to contact you.')
     const url = `https://wa.me/${phone}?text=${text}`
     window.open(url, '_blank')

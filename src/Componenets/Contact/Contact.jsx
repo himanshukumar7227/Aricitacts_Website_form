@@ -18,7 +18,7 @@ function Contact() {
       phone: formData.get('phone') // optional
     };
 
-    data.access_key = "6f8a69a9-2f68-46e3-9fea-0d2dd2c45894";
+    data.access_key = "e2988d74-0183-400c-92f7-1b599d14a024";
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -50,8 +50,8 @@ function Contact() {
             our services, pricing, or anything else, our team is ready to
              answer all your </p>
         <ul>
-            <li><img src={mail_icon} alt="Mail Icon" /> himanshukumar8051084723@gmail.com</li>
-            <li><img src={phone_icon} alt="Phone Icon" /> +91 7979881495</li>
+            <li><img src={mail_icon} alt="Mail Icon" /> ghraj2083@gmail.com</li>
+            <li><img src={phone_icon} alt="Phone Icon" /> +91 6205289787</li>
             <li><img src={location_icon} alt="Location Icon" /> 123 Main Street, City, Country</li>
         </ul>
       </div>
