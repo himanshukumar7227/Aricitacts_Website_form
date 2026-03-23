@@ -18,13 +18,13 @@ function Contact() {
       phone: formData.get('phone') // optional
     };
 
+    data.access_key = "6f8a69a9-2f68-46e3-9fea-0d2dd2c45894";
 
     try {
-      const response = await fetch('https://aricitacts-website-backend.onrender.com/submit', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': 'acf30e30e78401e4876d6534e9add756f5060b5c9621d8e9cd183afdddad6655'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
       });
