@@ -31,3 +31,22 @@
     color: #0056b3;
     text-decoration: underline;
 }
+/* ------------------------------media query------------------------------------- */
+@media (max-width: 768px) {
+    .developer {
+        padding: 10px 0;
+        font-size: 12px;
+    }
+    .developer p {
+        font-size: 13px;
+    }
+}
+@media (max-width: 480px) {
+    .developer {
+        padding: 8px 0;
+        font-size: 10px;
+    }
+    .developer p {
+        font-size: 11px;
+    }
+}

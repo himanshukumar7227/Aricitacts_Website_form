@@ -64,7 +64,7 @@ function Contact() {
         <h3>Send us a message <img src={msg_icon} alt="Message Icon" /></h3>
         <p>We'd love to hear from you! Whether you have a question about 
             our services, pricing, or anything else, our team is ready to
-             answer all your </p>
+             answer all your doubts and queries.</p>
         <ul>
             <li><img src={mail_icon} alt="Mail Icon" /> <span onClick={openEmail} style={{cursor: 'pointer', color: '#007bff'}}>ghraj2083@gmail.com</span></li>
             <li><img src={phone_icon} alt="Phone Icon" /> <span onClick={openWhatsApp} style={{cursor: 'pointer', color: '#007bff'}}>+91 6205289787</span></li>

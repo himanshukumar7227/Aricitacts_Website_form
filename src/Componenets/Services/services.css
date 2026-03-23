@@ -40,3 +40,22 @@
     opacity: 1;
     padding: 20%;
 }
+/***********************media query**************************/
+@media (max-width: 768px) {
+    .Services {
+        flex-direction: column;
+        margin: 60px auto;
+    }
+    .service {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 480px) {
+    .service {
+        margin-bottom: 15px;
+    }
+    .caption img {
+        width: 50px;
+    }
+}

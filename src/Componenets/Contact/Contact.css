@@ -53,3 +53,22 @@
     display: flex;
     margin: 20px 0;
 }
+/* ------------------------------media query------------------------------------- */
+@media (max-width: 768px) {
+    .contact {
+        flex-direction: column;
+        margin: 60px auto;
+    }
+    .contact-col {
+        flex-basis: 100%;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 480px) {
+    .contact-col h3 {
+        font-size: 20px;
+    }
+    .contact-col p {
+        font-size: 14px;
+    }
+}

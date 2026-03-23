@@ -14,3 +14,25 @@
     display: inline-block;
     margin: 0 10px;
 }
+/* ------------------------------media query------------------------------------- */
+@media (max-width: 768px) { 
+    .footer {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+    .footer ul {
+        margin-top: 10px;
+    }
+    .footer ul li {
+        margin: 5px 10px;
+    }
+}
+@media (max-width: 480px) {
+    .footer {
+        padding: 10px 0;
+    }
+    .footer ul li {
+        margin: 5px 5px;
+        font-size: 14px;
+    }
+}

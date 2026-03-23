@@ -42,3 +42,15 @@ a{
     color: #fff;
     margin-top: 20px;
 }
+
+/* ------------------------------media query------------------------------------- */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
